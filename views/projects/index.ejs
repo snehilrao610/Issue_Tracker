@@ -1,0 +1,7 @@
+<h1>List of Projects</h1>
+<ul>
+  <% projects.forEach(project => { %>
+  <li><a href="/<%= project._id %>"><%= project.name %></a></li>
+  <% }); %>
+</ul>
+<a href="/new">Create New Project</a>

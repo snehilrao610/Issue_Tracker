@@ -1,0 +1,103 @@
+<h1>Project Details: <%= project.name %></h1>
+<p>Description: <%= project.description %></p>
+<p>Author: <%= project.author %></p>
+<!-- Display related issues here -->
+<a href="/issues/new?projectId=<%= project._id %>">Create Issue</a>
+<a href="/">Back</a>
+<h1>List of all Issues</h1>
+<form method="get" action="/project/<%= project._id %>">
+  <label for="labels">Filter by Labels:</label>
+  <input
+    type="text"
+    name="labels"
+    id="labels"
+    placeholder="Enter labels separated by commas"
+  />
+
+  <label for="author">Filter by Author:</label>
+  <input
+    type="text"
+    name="author"
+    id="author"
+    placeholder="Enter author name"
+  />
+
+  <label for="search">Search by Title or Description:</label>
+  <input
+    type="text"
+    name="search"
+    id="search"
+    placeholder="Enter search keywords"
+  />
+
+  <button type="submit">Apply Filters</button>
+</form>
+
+<table>
+  <thead>
+    <th>S. No.</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Labels</th>
+    <th>Author</th>
+  </thead>
+  <% issues.forEach((issue, index) => { %>
+  <tr>
+    <td><%= index %></td>
+    <td><%= issue.title %></td>
+    <td><%= issue.description %></td>
+    <td><%= issue.labels.map(iss => iss.toLowerCase()).join(", ") %></td>
+    <td><%= issue.author %></td>
+  </tr>
+  <% }); %>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("form").on("submit", function (e) {
+      e.preventDefault(); // Prevent the form from submitting
+
+      const labels = $("#labels")
+        .val()
+        .toLowerCase()
+        .split(",")
+        .map((label) => label.trim());
+      const author = $("#author").val().trim();
+      const search = $("#search").val().toLowerCase();
+
+      // Filter and display table rows based on user input
+      $("table tbody tr").each(function () {
+        const row = $(this);
+        const rowLabels = row
+          .find("td:nth-child(4)")
+          .text()
+          .toLowerCase()
+          .split(",")
+          .map((label) => label.trim());
+        const rowAuthor = row.find("td:nth-child(5)").text().trim();
+        const rowTitle = row.find("td:nth-child(2)").text().toLowerCase();
+        const rowDescription = row.find("td:nth-child(3)").text().toLowerCase();
+
+        // Check if the row meets the filter criteria
+        const labelMatch =
+          labels.length > 0
+            ? labels.some((label) =>
+                rowLabels.some((row) => row.includes(label))
+              )
+            : false;
+        const authorMatch =
+          author !== "" && rowAuthor.toLowerCase() === author.toLowerCase();
+        const searchMatch =
+          search !== "" &&
+          (rowTitle.includes(search) || rowDescription.includes(search));
+        // Show or hide the row based on the filter criteria
+        if (labelMatch || authorMatch || searchMatch) {
+          row.show();
+        } else {
+          row.hide();
+        }
+      });
+    });
+  });
+</script>
