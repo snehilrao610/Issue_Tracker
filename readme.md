@@ -37,11 +37,15 @@ To use Issue Tracker, follow these steps:
 - Labels
 - Author
 
-Project Structure
+## Project Structure
+
 The project has the following structure:
 
-- public/: Contains HTML, CSS, and JavaScript files for the frontend.
-- uploads/: [Describe the purpose of this directory, if applicable]
+- /controllers: Contains controllers for Projects and Issues handling.
+- /lib: Contains `db.js` for databasde connection.
+- /models: Contains Project and Issue models.
+- /routes: Contains routes for projects and issues.
+- /views: Contains all view for frontend.
 - app.js: The Node.js application file that serves the project.
 - package.json and package-lock.json: Define project dependencies and scripts.
 
