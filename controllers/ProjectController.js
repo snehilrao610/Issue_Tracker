@@ -18,7 +18,7 @@ exports.renderCreateProjectForm = (req, res) => {
 exports.createProject = async (req, res) => {
   try {
     await Project.create(req.body);
-    res.redirect("/");
+    res.redirect("/projects");
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
@@ -42,4 +42,9 @@ exports.projectDetails = async (req, res) => {
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
+};
+
+exports.deleteProject = async (req, res) => {
+  await Project.findByIdAndDelete(req.params.projectId);
+  res.redirect("/projects");
 };

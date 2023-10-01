@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issue Tracker.in</title>
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/83e4281c25.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+      * {
+        font-family: "Poppins", sans-serif;
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="bg-white border-gray-200 shadow dark:bg-gray-800">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3"
+      >
+        <a href="#" class="flex items-center">
+          <img src="logo.png" class="h-10 mr-3" alt="Issue Tracker" />
+          <span
+            class="self-center text-xl font-bold whitespace-nowrap dark:text-white"
+            >ISSUE TRACKER
+            <span
+              class="bg-blue-100 text-blue-800 text-lg font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-2"
+              >PRO</span
+            ></span
+          >
+        </a>
+        <div class="flex items-center md:order-2">
+          <button
+            type="button"
+            class="flex mr-3"
+            id="user-menu-button"
+            aria-expanded="false"
+            data-dropdown-toggle="user-dropdown"
+            data-dropdown-placement="bottom"
+          >
+            <i
+              class="fa-solid fa-user fa-lg"
+              style="color: white; font-size: 28px"
+            ></i>
+          </button>
+          <!-- Dropdown menu -->
+          <div
+            class="z-50 hidden my-4 text-lg list-none bg-white divide-y divide-gray-100 rounded-lg shadowshadow dark:bg-gray-700 dark:divide-gray-600 dark:divide-gray-600"
+            id="user-dropdown"
+          >
+            <div class="px-4 py-3">
+              <span class="block text-sm text-gray-900 dark:text-white">
+                Shubham Singh</span
+              >
+              <span
+                class="block text-sm text-gray-500 truncate dark:text-gray-400"
+                >shubham@gmail.com</span
+              >
+            </div>
+            <ul class="py-2" aria-labelledby="user-menu-button">
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >
+                  Projects</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >
+                  Issues</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >Login</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >Sign out</a
+                >
+              </li>
+            </ul>
+          </div>
+          <button
+            data-collapse-toggle="navbar-user"
+            type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-user"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-user"
+        >
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700"
+            style="margin-right: 200px"
+          >
+            <li>
+              <a
+                href="index.html"
+                class="block py-2 text-lg pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="projects.html"
+                class="block py-2 text-lg pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="createproject.html"
+                class="block py-2 text-lg pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                aria-current="page"
+                >Create Project</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div style="padding: 20px 20px 0px 20px">
+      <section class="bg-white dark:bg-gray-800 rounded-xl">
+        <div class="p-16">
+          <div class="flex flex-col justify-center">
+            <h1 class="mb-5 text-4xl font-extrabold dark:text-white">
+              PROJECT DETAILS <i class="fa-solid fa-arrow-right"></i>
+            </h1>
+            <h1
+              class="mb-5 ml-50 uppercase font-semibold text-2xl dark:text-white"
+            >
+              CHAT Application
+            </h1>
+            <p
+              class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"
+            >
+              A chat application, or messaging app, is software that facilitates
+              real-time text-based communication between users. These apps allow
+              individuals or groups to send and receive messages, multimedia,
+              and emojis instantly. Chat applications often include features
+              like voice and video calls, group chats, and encryption for
+              privacy. They serve as essential tools for personal and
+              professional communication, enabling people to connect,
+              collaborate, and share information seamlessly across various
+              devices and platforms, making communication more convenient and
+              efficient.
+            </p>
+            <div class="flex justify-between ..." style="margin-top: 00px">
+              <div class="">
+                <a
+                  href="issue.html"
+                  class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                >
+                  Create Issue<i class="fa-solid fa-code fa-lg ml-1"></i>
+                </a>
+              </div>
+              <div class="">
+                <div class="font-medium dark:text-white">
+                  <div class="text-lg dark:text-gray-100">Created By</div>
+                  <div class="text-base text-gray-500 dark:text-gray-400">
+                    Shubham Singh
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div
+      class="flex justify-center"
+      style="margin-top: 60px; margin-bottom: 60px"
+    >
+      <div>
+        <h1 class="text-6xl font-extrabold dark:text-gray-900">
+          LIST OF ALL ISSUES
+        </h1>
+      </div>
+      <div class="relative top-2">
+        <img src="logo.png" class="w-20 ml-2" alt="ISSUE TRACKER" />
+      </div>
+    </div>
+    <div style="padding: 20px">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div
+          class="flex items-center justify-between py-4 bg-white dark:bg-gray-800"
+          style="padding-left: 40px; padding-right: 40px"
+        >
+          <div>
+            <button
+              id="dropdownActionButton"
+              data-dropdown-toggle="dropdownAction"
+              class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              type="button"
+            >
+              <span class="sr-only">Action button</span>
+              Filter By
+              <svg
+                class="w-2.5 h-2.5 ml-2.5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdownAction"
+              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <ul
+                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="dropdownActionButton"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Label</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Author</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >Decription</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <label for="table-search" class="sr-only">Search</label>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="table-search-users"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search By Filter"
+            />
+          </div>
+        </div>
+        <table
+          class="w-full text-base text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Sno.</th>
+              <th scope="col" class="px-6 py-3">Authors</th>
+              <th scope="col" class="px-6 py-3">Descriptions</th>
+              <th scope="col" class="px-6 py-3">Labels</th>
+              <th scope="col" class="px-6 py-3">Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-4 p-4">
+                <div class="flex items-center text-xl font-semibold ml-5">
+                  1
+                </div>
+              </td>
+              <th
+                scope="row"
+                class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div class="">
+                  <div class="text-base font-semibold">Shubham Singh</div>
+                  <div class="font-normal text-gray-500">shubham@gmail.com</div>
+                </div>
+              </th>
+              <td class="px-6 py-4">This website is not working</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center">responsive</div>
+              </td>
+              <td class="px-6 py-4">
+                <!-- Modal toggle -->
+                Not Responsive
+              </td>
+            </tr>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-4 p-4">
+                <div class="flex items-center text-xl font-semibold ml-5">
+                  2
+                </div>
+              </td>
+              <th
+                scope="row"
+                class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div class="">
+                  <div class="text-base font-semibold">Shubham Singh</div>
+                  <div class="font-normal text-gray-500">shubham@gmail.com</div>
+                </div>
+              </th>
+              <td class="px-6 py-4">This website is not working</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center">responsive</div>
+              </td>
+              <td class="px-6 py-4">Not Responsive</td>
+            </tr>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-4 p-4">
+                <div class="flex items-center text-xl font-semibold ml-5">
+                  3
+                </div>
+              </td>
+              <th
+                scope="row"
+                class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div class="">
+                  <div class="text-base font-semibold">Shubham Singh</div>
+                  <div class="font-normal text-gray-500">shubham@gmail.com</div>
+                </div>
+              </th>
+              <td class="px-6 py-4">This website is not working</td>
+              <td class="px-6 py-4">
+                <div class="flex items-center">responsive</div>
+              </td>
+              <td class="px-6 py-4">Not Responsive</td>
+            </tr>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-4 p-4">
+                <div class="flex items-center text-xl font-semibold ml-5">
+                  4
+                </div>
+              </td>
+              <th
+                scope="row"
+                class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div class="">
+                  <div class="text-base font-semibold">Ketan Vishwakarma</div>
+                  <div class="font-normal text-gray-500">ketan@gmail.com</div>
+                </div>
+              </th>
+              <td class="px-6 py-4">This website is not working</td>
+              <td class="px-6 py-4">responsive</td>
+              <td class="px-6 py-4">Not Responsive</td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-4 p-4">
+                <div class="flex items-center text-xl font-semibold ml-5">
+                  5
+                </div>
+              </td>
+              <th
+                scope="row"
+                class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <div class="">
+                  <div class="text-base font-semibold">Leslie Livingston</div>
+                  <div class="font-normal text-gray-500">leslie@gmail.com</div>
+                </div>
+              </th>
+              <td class="px-6 py-4">This website is not working</td>
+              <td class="px-6 py-4">responsive</td>
+              <td class="px-6 py-4">Not Responsive</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer
+      class="bg-white border-gray-200 shadow dark:bg-gray-800"
+      style="margin-top: 80px"
+    >
+      <div class="mx-auto max-w-screen-xl px-6 py-6">
+        <div class="md:flex md:justify-between">
+          <div class="mb-4">
+            <a href="#" class="flex items-center">
+              <img src="logo.png" class="h-10 mr-3" alt="ISSUE TRACKER" />
+              <span
+                class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white"
+                >ISSUE TRACKER</span
+              >
+            </a>
+          </div>
+          <div class="grid grid-cols-4 gap-12 sm:grid-cols-1">
+            <div>
+              <h2
+                class="mb-6 text-2xl font-semibold text-gray-900 uppercase dark:text-white"
+              >
+                Quick Links
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium text-sm">
+                <li class="mb-4">
+                  <a href="projects.html" class="hover:underline text-base"
+                    >Our Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="createproject.html" class="hover:underline text-base"
+                    >Create Projects</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-5"
+        />
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <span
+            class="text-base text-gray-500 sm:text-center dark:text-gray-400"
+            >© 2023 <a href="#" class="hover:underline">Issue Tracker™</a> |
+            Designed By Ketan Vishwakarma
+          </span>
+          <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            >
+              <i class="fa-brands fa-facebook fa-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            >
+              <i class="fa-brands fa-github fa-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            >
+              <i class="fa-brands fa-instagram fa-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+            >
+              <i class="fa-brands fa-x-twitter fa-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+  </body>
+</html>
+
+<!-- Modal toggle -->
+
+<!-- Main modal -->

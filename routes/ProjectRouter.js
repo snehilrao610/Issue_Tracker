@@ -14,4 +14,6 @@ router.post("/", projectController.createProject);
 // Route to display project details and related issues
 router.get("/:projectId", projectController.projectDetails);
 
+router.get("/delete/:projectId", projectController.deleteProject);
+
 module.exports = router;

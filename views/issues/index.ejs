@@ -1,8 +1,0 @@
-<h1>List of Issues for <%= project.name %></h1>
-<ul>
-  <% issues.forEach(issue => { %>
-  <li><%= issue.title %></li>
-  <!-- Display other issue details as needed -->
-  <% }); %>
-</ul>
-<a href="/issues/new?projectId=<%= project._id %>">Create New Issue</a>

@@ -33,7 +33,7 @@ exports.createIssue = async (req, res) => {
     await Issue.create({ projectId, title, description, labels, author });
 
     // Redirect to the project details page
-    res.redirect(`/${projectId}`);
+    res.redirect(`/projects/${projectId}`);
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
